@@ -1,9 +1,13 @@
 from tkinter import *
 from tkinter import messagebox
+from PIL import Image, ImageTk
+
 
 import numpy as np
 from scipy.integrate import quad
 from scipy import integrate
+
+from math import *
 
 root = Tk()
 
@@ -18,10 +22,10 @@ def btn_click():
     reta, reta_error = integrate.quad(func2, int(a), int(b) )
 
     info_str = f'''Trapezoid  = {integrate.trapezoid(eval(func1), x)}
-Trapezoid Error = {reta - integrate.trapezoid(eval(func1), x)}
+Trapezoid Error = {abs(reta - integrate.trapezoid(eval(func1), x))}
     
 Simpson = {integrate.simpson(eval(func1), x)}
-Simpson Error = {reta - integrate.simpson(eval(func1), x)}
+Simpson Error = {abs(reta - integrate.simpson(eval(func1), x))}
 '''
     messagebox.showinfo(title='Name', message=info_str)
 
@@ -31,7 +35,7 @@ root.wm_attributes('-alpha')
 root.geometry('500x500')
 
 
-root.resizable(width=False,height=False)
+root.resizable(width=True,height=True)
 
 canvas = Canvas(root, height=500, width=500)
 canvas.pack()
@@ -42,12 +46,14 @@ frame.place(relx=0.15, rely=0.15, relwidth=0.7, relheight=0.7)
 title = Label(frame,text='Trapezoid and Simpson', bg='gray', font=40)
 title.pack()
 
-btn = Button(frame, text='Calculate', bg='green', command=btn_click)
-btn.pack()
+image = ImageTk.PhotoImage(Image.open("tura.jpg").resize([200,80]))
 
-title = Label(frame,text='Trapezoid and Simpson', bg='gray', font=40)
+label = Label(canvas, image = image)
+label.pack(side = TOP)
+
+title = Label(frame,text='Function', bg='gray', font=40)
 title.pack()
-func = Entry(frame, bg='white', textvariable='Function')
+func = Entry(frame, bg='white')
 func.pack()
 
 a_num_wr = Label(frame,text='a or where function start', bg='gray', font=40)
@@ -64,5 +70,8 @@ n_num_wr = Label(frame,text='number of steps', bg='gray', font=40)
 n_num_wr.pack()
 n_num = Entry(frame, bg='white')
 n_num.pack()
+
+btn = Button(frame, text='Calculate', bg='green', command=btn_click)
+btn.pack()
 
 root.mainloop()
