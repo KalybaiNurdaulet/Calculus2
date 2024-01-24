@@ -36,24 +36,32 @@ root.resizable(width=False,height=False)
 canvas = Canvas(root, height=500, width=500)
 canvas.pack()
 
-frame = Frame(root, bg='blue')
+frame = Frame(root, bg='gray')
 frame.place(relx=0.15, rely=0.15, relwidth=0.7, relheight=0.7)
 
-title = Label(frame,text='Text sample', bg='gray', font=40)
+title = Label(frame,text='Trapezoid and Simpson', bg='gray', font=40)
 title.pack()
 
-btn = Button(frame, text='Button', bg='yellow', command=btn_click)
+btn = Button(frame, text='Calculate', bg='green', command=btn_click)
 btn.pack()
 
-func = Entry(frame, bg='white')
+title = Label(frame,text='Trapezoid and Simpson', bg='gray', font=40)
+title.pack()
+func = Entry(frame, bg='white', textvariable='Function')
 func.pack()
 
+a_num_wr = Label(frame,text='a or where function start', bg='gray', font=40)
+a_num_wr.pack()
 a_num = Entry(frame, bg='white')
 a_num.pack()
 
+b_num_wr = Label(frame,text='b or where function stop', bg='gray', font=40)
+b_num_wr.pack()
 b_num = Entry(frame, bg='white')
 b_num.pack()
 
+n_num_wr = Label(frame,text='number of steps', bg='gray', font=40)
+n_num_wr.pack()
 n_num = Entry(frame, bg='white')
 n_num.pack()
 
