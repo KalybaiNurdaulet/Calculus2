@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
+import math
 
 import numpy as np
 from scipy.integrate import quad
@@ -26,6 +27,8 @@ Trapezoid Error = {abs(reta - integrate.trapezoid(eval(func1), x))}
     
 Simpson = {integrate.simpson(eval(func1), x)}
 Simpson Error = {abs(reta - integrate.simpson(eval(func1), x))}
+
+Integral = {reta}
 '''
     messagebox.showinfo(title='Name', message=info_str)
 
